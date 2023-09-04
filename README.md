@@ -1,2 +1,2 @@
 # Books-Management
-SP Servlet JDBC MySQL Create Read Update Delete (CRUD)
+JSP Servlet JDBC MySQL Create Read Update Delete (CRUD)
