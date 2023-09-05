@@ -107,4 +107,48 @@ public class BookDALTest {
         assertFalse(result);
     }
 
+    @Test
+    public void testDeleteBook_Success() throws SQLException {
+        Connection connection = mock(Connection.class);
+        PreparedStatement preparedStatement = mock(PreparedStatement.class);
+
+        when(dataSource.getConnection()).thenReturn(connection);
+        when(connection.prepareStatement(anyString())).thenReturn(preparedStatement);
+        when(preparedStatement.executeUpdate()).thenReturn(1);
+
+        Book book = new Book();
+        book.setId(1);
+
+        boolean result = bookDAL.deleteBook(book);
+
+        verify(preparedStatement).setInt(1, 1);
+
+        verify(preparedStatement).close();
+        verify(connection).close();
+
+        assertTrue(result);
+    }
+
+    @Test
+    public void testDeleteBook_Failure() throws SQLException {
+        Connection connection = mock(Connection.class);
+        PreparedStatement preparedStatement = mock(PreparedStatement.class);
+
+        when(dataSource.getConnection()).thenReturn(connection);
+        when(connection.prepareStatement(anyString())).thenReturn(preparedStatement);
+        when(preparedStatement.executeUpdate()).thenThrow(new SQLException("Deletion failed"));
+
+        Book book = new Book();
+        book.setId(1);
+
+        boolean result = bookDAL.deleteBook(book);
+
+        verify(preparedStatement).setInt(1, 1);
+
+        verify(preparedStatement).close();
+        verify(connection).close();
+
+        assertFalse(result);
+    }
+
 }

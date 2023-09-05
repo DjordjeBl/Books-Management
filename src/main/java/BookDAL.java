@@ -51,4 +51,15 @@ public class BookDAL {
             return statement.executeUpdate() > 0;
         }
     }
+
+    public boolean deleteBook(Book book) throws SQLException {
+        String sql = "DELETE FROM book where book_id = ?";
+
+        try(Connection connection = dataSource.getConnection();
+        PreparedStatement statement= connection.prepareStatement(sql)) {
+            statement.setInt(1, book.getId());
+
+            return statement.executeUpdate() > 0;
+        }
+    }
 }
