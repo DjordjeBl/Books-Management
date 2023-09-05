@@ -43,7 +43,7 @@ public class BookDAL {
         String sql = "INSERT INTO book (title, author, price) VALUES (?, ?, ?)";
 
         try (Connection connection = dataSource.getConnection();
-        PreparedStatement statement = connection.prepareStatement(sql)) {
+             PreparedStatement statement = connection.prepareStatement(sql)) {
             statement.setString(1, book.getTitle());
             statement.setString(2, book.getAuthor());
             statement.setFloat(3, book.getPrice());
@@ -55,8 +55,8 @@ public class BookDAL {
     public boolean deleteBook(Book book) throws SQLException {
         String sql = "DELETE FROM book where book_id = ?";
 
-        try(Connection connection = dataSource.getConnection();
-        PreparedStatement statement= connection.prepareStatement(sql)) {
+        try (Connection connection = dataSource.getConnection();
+             PreparedStatement statement = connection.prepareStatement(sql)) {
             statement.setInt(1, book.getId());
 
             return statement.executeUpdate() > 0;
@@ -67,8 +67,8 @@ public class BookDAL {
         String sql = "UPDATE book SET title =?, author =?, price =?";
         sql += " WHERE book_id = ?";
 
-        try(Connection connection = dataSource.getConnection();
-        PreparedStatement statement = connection.prepareStatement(sql)) {
+        try (Connection connection = dataSource.getConnection();
+             PreparedStatement statement = connection.prepareStatement(sql)) {
             statement.setString(1, book.getTitle());
             statement.setString(2, book.getAuthor());
             statement.setFloat(3, book.getPrice());
@@ -77,4 +77,25 @@ public class BookDAL {
             return statement.executeUpdate() > 0;
         }
     }
+
+    public Book getBook(int id) throws SQLException {
+        Book book = null;
+        String sql = "SELECT * FROM book WHERE book_id = ?";
+
+        try (Connection connection = dataSource.getConnection();
+             PreparedStatement statement = connection.prepareStatement(sql)) {
+            statement.setInt(1, id); // Set the parameter value
+            try (ResultSet resultSet = statement.executeQuery()) {
+                if (resultSet.next()) {
+                    String title = resultSet.getString("title");
+                    String author = resultSet.getString("author");
+                    float price = resultSet.getFloat("price");
+
+                    book = new Book(id, title, author, price);
+                }
+            }
+        }
+        return book;
+    }
+
 }

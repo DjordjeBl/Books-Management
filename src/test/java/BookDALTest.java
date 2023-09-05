@@ -1,4 +1,6 @@
 import models.Book;
+import org.junit.After;
+import org.junit.Before;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
@@ -21,6 +23,11 @@ public class BookDALTest {
     public void setUp() {
         dataSource = mock(DataSource.class); // Use a mock DataSource for testing
         bookDAL = new BookDAL(dataSource);
+    }
+
+    @After
+    public void tearDown() throws SQLException {
+        verify(dataSource.getConnection()).close();
     }
 
     @Test
@@ -205,6 +212,48 @@ public class BookDALTest {
         verify(connection).close();
 
         assertFalse(result);
+    }
+
+    @Test
+    public void testGetBook_ExistingBook() throws SQLException {
+        int id = 1;
+        Connection connection = mock(Connection.class);
+        PreparedStatement statement = mock(PreparedStatement.class);
+        ResultSet resultSet = mock(ResultSet.class);
+
+        when(dataSource.getConnection()).thenReturn(connection);
+        when(connection.prepareStatement(anyString())).thenReturn(statement);
+        when(statement.executeQuery()).thenReturn(resultSet);
+        when(resultSet.next()).thenReturn(true);
+        when(resultSet.getInt("book_id")).thenReturn(id);
+        when(resultSet.getString("title")).thenReturn("Test Title");
+        when(resultSet.getString("author")).thenReturn("Test Author");
+        when(resultSet.getFloat("price")).thenReturn(19.99f);
+
+        Book result = bookDAL.getBook(id);
+
+        assertNotNull(result);
+        assertEquals(id, result.getId());
+        assertEquals("Test Title", result.getTitle());
+        assertEquals("Test Author", result.getAuthor());
+        assertEquals(19.99f, result.getPrice(), 0.01); // Comparing floating-point numbers with a small epsilon
+    }
+
+    @Test
+    public void testGetBook_NonExistingBook() throws SQLException {
+        int id = 2;
+        Connection connection = mock(Connection.class);
+        PreparedStatement statement = mock(PreparedStatement.class);
+        ResultSet resultSet = mock(ResultSet.class);
+
+        when(dataSource.getConnection()).thenReturn(connection);
+        when(connection.prepareStatement(anyString())).thenReturn(statement);
+        when(statement.executeQuery()).thenReturn(resultSet);
+        when(resultSet.next()).thenReturn(false);
+
+        Book result = bookDAL.getBook(id);
+
+        assertNull(result);
     }
 
 }
