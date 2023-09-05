@@ -1,7 +1,8 @@
 import models.Book;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-import static org.junit.jupiter.api.Assertions.assertEquals;
+
+import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.Mockito.*;
 
 import javax.sql.DataSource;
@@ -53,6 +54,57 @@ public class BookDALTest {
         assertEquals(expectedBooks, actualBooks);
     }
 
+    @Test
+    public void testInsertBook_Success() throws SQLException {
+        // Mock the necessary objects
+        Connection connection = mock(Connection.class);
+        PreparedStatement preparedStatement = mock(PreparedStatement.class);
 
+        // Configure the dataSource to return the mock connection
+        when(dataSource.getConnection()).thenReturn(connection);
+        when(connection.prepareStatement(anyString())).thenReturn(preparedStatement);
+        when(preparedStatement.executeUpdate()).thenReturn(1);
+
+        // Create a sample book
+        Book book = new Book("Sample title", "Sample Author", 10.22f);
+
+        // Call the insertBook method
+        boolean result = bookDAL.insertBook(book);
+
+        // Verify that the SQL query was executed with the correct parameters
+        verify(preparedStatement).setString(1, "Sample title");
+        verify(preparedStatement).setString(2, "Sample Author");
+        verify(preparedStatement).setFloat(3, 10.22f);
+
+        // Verify that the connection and prepared statement were closed
+        verify(preparedStatement).close();
+        verify(connection).close();
+
+        // Check if the assertion was successful
+        assertTrue(result);
+    }
+
+    @Test
+    public void testInsertBook_Failure() throws SQLException {
+        Connection connection = mock(Connection.class);
+        PreparedStatement preparedStatement = mock(PreparedStatement.class);
+
+        when(dataSource.getConnection()).thenReturn(connection);
+        when(connection.prepareStatement(anyString())).thenReturn(preparedStatement);
+        when(preparedStatement.executeUpdate()).thenThrow(new SQLException("Insertion failed"));
+
+        Book book = new Book("Sample title", "Sample author", 10.22f);
+
+        boolean result = bookDAL.insertBook(book);
+
+        verify(preparedStatement).setString(1, "Sample title");
+        verify(preparedStatement).setString(2, "Sample author");
+        verify(preparedStatement).setFloat(3, 10.22f);
+
+        verify(preparedStatement).close();
+        verify(connection).close();
+
+        assertFalse(result);
+    }
 
 }

@@ -38,4 +38,17 @@ public class BookDAL {
 
         return listBook;
     }
+
+    public boolean insertBook(Book book) throws SQLException {
+        String sql = "INSERT INTO book (title, author, price) VALUES (?, ?, ?)";
+
+        try (Connection connection = dataSource.getConnection();
+        PreparedStatement statement = connection.prepareStatement(sql)) {
+            statement.setString(1, book.getTitle());
+            statement.setString(2, book.getAuthor());
+            statement.setFloat(3, book.getPrice());
+
+            return statement.executeUpdate() > 0;
+        }
+    }
 }

@@ -5,11 +5,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="61cbeff1-c462-422e-8384-f2a66eda240e" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/main/java/BookDAL.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/test/java/BookDALTest.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/models/Book.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/models/Book.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/BookDAL.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/BookDAL.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/BookDALTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/BookDALTest.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -44,19 +42,39 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "ASKED_ADD_EXTERNAL_FILES": "true",
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;ASKED_ADD_EXTERNAL_FILES&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;
   }
-}]]></component>
-  <component name="RunManager" selected="JUnit.BookDALTest.testListAllBooks">
+}</component>
+  <component name="RunManager" selected="JUnit.BookDALTest.testInsertBook_Failure">
     <configuration name="BookDALTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="Books_management" />
       <option name="PACKAGE_NAME" value="" />
       <option name="MAIN_CLASS_NAME" value="BookDALTest" />
       <option name="TEST_OBJECT" value="class" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="BookDALTest.testInsertBook_Failure" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="Books_management" />
+      <option name="PACKAGE_NAME" value="" />
+      <option name="MAIN_CLASS_NAME" value="BookDALTest" />
+      <option name="METHOD_NAME" value="testInsertBook_Failure" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="BookDALTest.testInsertBook_Success" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="Books_management" />
+      <option name="PACKAGE_NAME" value="" />
+      <option name="MAIN_CLASS_NAME" value="BookDALTest" />
+      <option name="METHOD_NAME" value="testInsertBook_Success" />
+      <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -73,6 +91,8 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="JUnit.BookDALTest.testInsertBook_Failure" />
+        <item itemvalue="JUnit.BookDALTest.testInsertBook_Success" />
         <item itemvalue="JUnit.BookDALTest.testListAllBooks" />
         <item itemvalue="JUnit.BookDALTest" />
       </list>
