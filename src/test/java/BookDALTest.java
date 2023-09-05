@@ -151,4 +151,60 @@ public class BookDALTest {
         assertFalse(result);
     }
 
+    @Test
+    public void testUpdateBook_Success() throws SQLException {
+        Connection connection = mock(Connection.class);
+        PreparedStatement preparedStatement = mock(PreparedStatement.class);
+
+        when(dataSource.getConnection()).thenReturn(connection);
+        when(connection.prepareStatement(anyString())).thenReturn(preparedStatement);
+        when(preparedStatement.executeUpdate()).thenReturn(1);
+
+        Book book = new Book();
+        book.setId(1);
+        book.setTitle("Updated Title");
+        book.setAuthor("Updated Author");
+        book.setPrice(10.22f);
+
+        boolean result = bookDAL.updateBook(book);
+
+        verify(preparedStatement).setString(1, "Updated Title");
+        verify(preparedStatement).setString(2, "Updated Author");
+        verify(preparedStatement).setFloat(3, 10.22f);
+        verify(preparedStatement).setInt(4, 1);
+
+        verify(preparedStatement).close();
+        verify(connection).close();
+
+        assertTrue(result);
+    }
+
+    @Test
+    public void testUpdateBook_Failure() throws SQLException {
+        Connection connection = mock(Connection.class);
+        PreparedStatement preparedStatement = mock(PreparedStatement.class);
+
+        when(dataSource.getConnection()).thenReturn(connection);
+        when(connection.prepareStatement(anyString())).thenReturn(preparedStatement);
+        when(preparedStatement.executeUpdate()).thenThrow(new SQLException("Update failed"));
+
+        Book book = new Book();
+        book.setId(1);
+        book.setTitle("Updated Title");
+        book.setAuthor("Updated Author");
+        book.setPrice(10.22f);
+
+        boolean result = bookDAL.updateBook(book);
+
+        verify(preparedStatement).setString(1, "Updated Title");
+        verify(preparedStatement).setString(2, "Updated Author");
+        verify(preparedStatement).setFloat(3, 10.22f);
+        verify(preparedStatement).setInt(4, 1);
+
+        verify(preparedStatement).close();
+        verify(connection).close();
+
+        assertFalse(result);
+    }
+
 }

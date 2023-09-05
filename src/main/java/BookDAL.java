@@ -62,4 +62,19 @@ public class BookDAL {
             return statement.executeUpdate() > 0;
         }
     }
+
+    public boolean updateBook(Book book) throws SQLException {
+        String sql = "UPDATE book SET title =?, author =?, price =?";
+        sql += " WHERE book_id = ?";
+
+        try(Connection connection = dataSource.getConnection();
+        PreparedStatement statement = connection.prepareStatement(sql)) {
+            statement.setString(1, book.getTitle());
+            statement.setString(2, book.getAuthor());
+            statement.setFloat(3, book.getPrice());
+            statement.setInt(4, book.getId());
+
+            return statement.executeUpdate() > 0;
+        }
+    }
 }
