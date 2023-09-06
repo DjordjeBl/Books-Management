@@ -11,7 +11,6 @@
   <component name="ProjectResources">
     <resource url="http://xmlns.jcp.org/xml/ns/javaee" location="$PROJECT_DIR$" />
     <resource url="http://xmlns.jcp.org/xml/ns/javaee/web-app_4_0.xsd" location="$PROJECT_DIR$" />
-    <resource url="https://jakarta.ee/xml/ns/jakartaee/web-app_5_0.xsd" location="$PROJECT_DIR$/src/WebContent/Web.xml" />
   </component>
   <component name="ProjectRootManager" version="2" languageLevel="JDK_17" default="true" project-jdk-name="17" project-jdk-type="JavaSDK">
     <output url="file://$PROJECT_DIR$/out" />

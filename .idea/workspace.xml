@@ -5,14 +5,10 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="61cbeff1-c462-422e-8384-f2a66eda240e" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/WebContent/BookForm.jsp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/WebContent/BookList.jsp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/WebContent/Error.jsp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/WebContent/WEB-INF/Web.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/WebContent/styles.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/ControllerServlet.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/WebContent/WEB-INF/Web.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/WebContent/WEB-INF/Web.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -62,6 +58,9 @@
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
       <recent name="C:\Users\PC\Desktop\Books_management\src\WebContent\WEB-INF" />
+    </key>
+    <key name="MoveClassesOrPackagesDialog.RECENTS_KEY">
+      <recent name="" />
     </key>
   </component>
   <component name="RunManager" selected="JUnit.BookDALTest.testGetBook_NonExistingBook">
