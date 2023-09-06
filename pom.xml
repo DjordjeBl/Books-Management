@@ -7,6 +7,7 @@
     <groupId>org.example</groupId>
     <artifactId>Books_management</artifactId>
     <version>1.0-SNAPSHOT</version>
+    <packaging>war</packaging>
     <dependencies>
         <dependency>
             <groupId>javax.servlet</groupId>
@@ -45,7 +46,7 @@
         <dependency>
             <groupId>org.mockito</groupId>
             <artifactId>mockito-core</artifactId>
-            <version>5.5.0</version> <!-- Replace with the latest version -->
+            <version>3.12.4</version> <!-- Replace with the latest version -->
             <scope>test</scope>
         </dependency>
         <dependency>
@@ -63,5 +64,25 @@
         <maven.compiler.target>17</maven.compiler.target>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     </properties>
+    <build>
+
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <version>3.8.1</version>
+                <configuration>
+                    <source>1.8</source>
+                    <target>1.8</target>
+                </configuration>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-war-plugin</artifactId>
+                <version>3.3.1</version> <!-- Use an appropriate version -->
+            </plugin>
+        </plugins>
+    </build>
+
 
 </project>
