@@ -8,7 +8,7 @@ import java.util.Optional;
 
 public class BookService {
 
-    private BookDAL bookDAL;
+    private final BookDAL bookDAL;
 
     public BookService(BookDAL bookDAL) {
         this.bookDAL = bookDAL;

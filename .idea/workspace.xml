@@ -6,7 +6,8 @@
   <component name="ChangeListManager">
     <list default="true" id="61cbeff1-c462-422e-8384-f2a66eda240e" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/ControllerServlet.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ControllerServlet.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/BookService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/BookService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/BookDALTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/BookDALTest.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -61,17 +62,7 @@
       <recent name="" />
     </key>
   </component>
-  <component name="RunManager" selected="JUnit.BookDALTest.testGetBook_NonExistingBook">
-    <configuration name="BookDALTest.testDeleteBook_Failure" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="Books_management" />
-      <option name="PACKAGE_NAME" value="" />
-      <option name="MAIN_CLASS_NAME" value="BookDALTest" />
-      <option name="METHOD_NAME" value="testDeleteBook_Failure" />
-      <option name="TEST_OBJECT" value="method" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
+  <component name="RunManager" selected="JUnit.BookDALTest.testInsertBook_Success">
     <configuration name="BookDALTest.testGetBook_ExistingBook" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="Books_management" />
       <option name="PACKAGE_NAME" value="" />
@@ -87,6 +78,16 @@
       <option name="PACKAGE_NAME" value="" />
       <option name="MAIN_CLASS_NAME" value="BookDALTest" />
       <option name="METHOD_NAME" value="testGetBook_NonExistingBook" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="BookDALTest.testInsertBook_Success" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="Books_management" />
+      <option name="PACKAGE_NAME" value="" />
+      <option name="MAIN_CLASS_NAME" value="BookDALTest" />
+      <option name="METHOD_NAME" value="testInsertBook_Success" />
       <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
@@ -114,11 +115,11 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="JUnit.BookDALTest.testInsertBook_Success" />
         <item itemvalue="JUnit.BookDALTest.testGetBook_NonExistingBook" />
         <item itemvalue="JUnit.BookDALTest.testGetBook_ExistingBook" />
         <item itemvalue="JUnit.BookDALTest.testUpdateBook_Failure" />
         <item itemvalue="JUnit.BookDALTest.testUpdateBook_Success" />
-        <item itemvalue="JUnit.BookDALTest.testDeleteBook_Failure" />
       </list>
     </recent_temporary>
   </component>

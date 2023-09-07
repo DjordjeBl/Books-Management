@@ -1,52 +1,50 @@
 import models.Book;
-import org.junit.After;
-import org.junit.Before;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.mockito.Mock;
-import org.mockito.Mockito;
 import org.mockito.MockitoAnnotations;
 
 import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.ArgumentMatchers.anyString;
-import static org.mockito.Mockito.mock;
-import static org.mockito.Mockito.when;
+import static org.mockito.Mockito.*;
 
 import java.sql.*;
 
 public class BookDALTest {
+
     @Mock
     private Connection mockConnection;
 
     @Mock
-    private PreparedStatement mockPreparedStatement;
+    private PreparedStatement mockStatement;
 
     private BookDAL bookDAL;
 
-    @Before
+    @BeforeEach
     public void setUp() throws SQLException {
-        MockitoAnnotations.initMocks(this);
-
-        // Initialize the BookDAL with the mockConnection
+        MockitoAnnotations.openMocks(this);
         bookDAL = new BookDAL(mockConnection);
     }
 
-    @After
-    public void tearDown() throws SQLException {
-        // Clean up and close any resources
-    }
-
     @Test
-    public void testInsertBook() throws SQLException {
-        Book testBook = new Book("Test Title", "Test Author", 19.99f);
+    public void testInsertBook_Success() throws SQLException {
+        when(mockConnection.prepareStatement(anyString())).thenReturn(mockStatement);
+        when(mockStatement.executeUpdate()).thenReturn(1); // Simulate a successful insert
 
-        when(mockConnection.prepareStatement(anyString())).thenReturn(mockPreparedStatement);
-        when(mockPreparedStatement.executeUpdate()).thenReturn(1);
+        Book book = new Book("Sample Title", "Sample Author", 19.99f);
 
-        boolean insertionResult = bookDAL.insertBook(testBook);
+        boolean rowInserted = bookDAL.insertBook(book);
 
-        assertTrue(insertionResult);
+        assertTrue(rowInserted);
+
+        verify(mockConnection, times(1)).prepareStatement(anyString());
+        verify(mockStatement, times(1)).setString(1, book.getTitle());
+        verify(mockStatement, times(1)).setString(2, book.getAuthor());
+        verify(mockStatement, times(1)).setFloat(3, book.getPrice());
+        verify(mockStatement, times(1)).executeUpdate();
+        verify(mockStatement, times(1)).close();
+        verify(mockConnection, times(1)).close();
     }
-
 
 
 }
