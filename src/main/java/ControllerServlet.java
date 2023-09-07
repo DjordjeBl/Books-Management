@@ -9,19 +9,21 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.sql.SQLException;
 import java.util.List;
+import java.util.Optional;
 
 public class ControllerServlet extends HttpServlet {
 
     private static final long serialVersionUID = 1L;
-    private BookDAL bookDAL;
+    private BookService bookService;
+
 
     public void init() {
         String jdbcURL = getServletContext().getInitParameter("jdbcURL");
         String jdbcUsername = getServletContext().getInitParameter("jdbcUsername");
         String jdbcPassword = getServletContext().getInitParameter("jdbcPassword");
 
-        bookDAL = new BookDAL(jdbcURL, jdbcUsername, jdbcPassword);
-
+        BookDAL bookDAL = new BookDAL(jdbcURL, jdbcUsername, jdbcPassword);
+        bookService = new BookService(bookDAL);
     }
 
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -59,7 +61,7 @@ public class ControllerServlet extends HttpServlet {
 
     private void listBooks(HttpServletRequest request, HttpServletResponse response)
             throws SQLException, ServletException, IOException {
-        List<Book> listBook = bookDAL.listAllBooks();
+        List<Book> listBook = bookService.listAllBooks();
         request.setAttribute("listBook", listBook);
         RequestDispatcher dispatcher = request.getRequestDispatcher("/BookList.jsp");
         dispatcher.forward(request, response);
@@ -74,7 +76,7 @@ public class ControllerServlet extends HttpServlet {
     private void showEditForm(HttpServletRequest request, HttpServletResponse response)
             throws SQLException, ServletException, IOException {
         int id = Integer.parseInt(request.getParameter("id"));
-        Book existingBook = bookDAL.getBook(id);
+        Optional<Book> existingBook = bookService.getBook(id);
         RequestDispatcher dispatcher = request.getRequestDispatcher("/BookForm.jsp");
         request.setAttribute("book", existingBook);
         dispatcher.forward(request, response);
@@ -86,7 +88,7 @@ public class ControllerServlet extends HttpServlet {
         float price = Float.parseFloat(request.getParameter("price"));
 
         Book book = new Book(title, author, price);
-        bookDAL.insertBook(book);
+        bookService.insertBook(book);
         response.sendRedirect("list");
     }
 
@@ -98,7 +100,7 @@ public class ControllerServlet extends HttpServlet {
         float price = Float.parseFloat(request.getParameter("price"));
 
         Book book = new Book(id, title, author, price);
-        bookDAL.updateBook(book);
+        bookService.updateBook(book);
         response.sendRedirect("list");
     }
 
@@ -107,7 +109,7 @@ public class ControllerServlet extends HttpServlet {
         int id = Integer.parseInt(request.getParameter("id"));
 
         Book book = new Book(id);
-        bookDAL.deleteBook(book);
+        bookService.deleteBook(book.getId());
         response.sendRedirect("list");
     }
 
