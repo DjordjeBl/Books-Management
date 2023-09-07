@@ -1,19 +1,17 @@
 import models.Book;
 import org.junit.After;
 import org.junit.Before;
-import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.mockito.Mock;
 import org.mockito.Mockito;
 import org.mockito.MockitoAnnotations;
 
 import static org.junit.jupiter.api.Assertions.*;
-import static org.mockito.Mockito.*;
+import static org.mockito.ArgumentMatchers.anyString;
+import static org.mockito.Mockito.mock;
+import static org.mockito.Mockito.when;
 
-import javax.sql.DataSource;
 import java.sql.*;
-import java.util.ArrayList;
-import java.util.List;
 
 public class BookDALTest {
     @Mock
@@ -41,12 +39,14 @@ public class BookDALTest {
     public void testInsertBook() throws SQLException {
         Book testBook = new Book("Test Title", "Test Author", 19.99f);
 
-        Mockito.when(mockConnection.prepareStatement(Mockito.anyString())).thenReturn(mockPreparedStatement);
-        Mockito.when(mockPreparedStatement.executeUpdate()).thenReturn(1);
+        when(mockConnection.prepareStatement(anyString())).thenReturn(mockPreparedStatement);
+        when(mockPreparedStatement.executeUpdate()).thenReturn(1);
 
         boolean insertionResult = bookDAL.insertBook(testBook);
 
         assertTrue(insertionResult);
     }
+
+
 
 }

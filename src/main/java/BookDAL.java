@@ -1,6 +1,5 @@
 import models.Book;
 
-import javax.sql.DataSource;
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
@@ -20,6 +19,10 @@ public class BookDAL {
 
     public BookDAL(Connection mockConnection) {
         this.jdbcConnection = mockConnection;
+
+    }
+
+    public BookDAL() {
 
     }
 
@@ -84,13 +87,13 @@ public class BookDAL {
         return listBook;
     }
 
-    public boolean deleteBook(Book book) throws SQLException {
+    public boolean deleteBook(int bookId) throws SQLException {
         String sql = "DELETE FROM book where book_id = ?";
 
         connect();
 
         PreparedStatement statement = jdbcConnection.prepareStatement(sql);
-        statement.setInt(1, book.getId());
+        statement.setInt(1, bookId);
 
         boolean rowDeleted = statement.executeUpdate() > 0;
         statement.close();
