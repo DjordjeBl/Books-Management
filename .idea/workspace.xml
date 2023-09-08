@@ -61,52 +61,52 @@
       <recent name="" />
     </key>
   </component>
-  <component name="RunManager" selected="JUnit.BookDALTest.testInsertBook_Success">
-    <configuration name="BookDALTest.testGetBook_ExistingBook" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+  <component name="RunManager" selected="JUnit.BookDALTest.getBookTest_Failure">
+    <configuration name="BookDALTest.deleteBookTest_Failure" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="Books_management" />
       <option name="PACKAGE_NAME" value="" />
       <option name="MAIN_CLASS_NAME" value="BookDALTest" />
-      <option name="METHOD_NAME" value="testGetBook_ExistingBook" />
+      <option name="METHOD_NAME" value="deleteBookTest_Failure" />
       <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="BookDALTest.testGetBook_NonExistingBook" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="BookDALTest.deleteBookTest_Success" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="Books_management" />
       <option name="PACKAGE_NAME" value="" />
       <option name="MAIN_CLASS_NAME" value="BookDALTest" />
-      <option name="METHOD_NAME" value="testGetBook_NonExistingBook" />
+      <option name="METHOD_NAME" value="deleteBookTest_Success" />
       <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="BookDALTest.testInsertBook_Failure" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="BookDALTest.getBookTest_Failure" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="Books_management" />
       <option name="PACKAGE_NAME" value="" />
       <option name="MAIN_CLASS_NAME" value="BookDALTest" />
-      <option name="METHOD_NAME" value="testInsertBook_Failure" />
+      <option name="METHOD_NAME" value="getBookTest_Failure" />
       <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="BookDALTest.testInsertBook_Success" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="BookDALTest.getBookTest_Success" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="Books_management" />
       <option name="PACKAGE_NAME" value="" />
       <option name="MAIN_CLASS_NAME" value="BookDALTest" />
-      <option name="METHOD_NAME" value="testInsertBook_Success" />
+      <option name="METHOD_NAME" value="getBookTest_Success" />
       <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="BookDALTest.testListAllBooks" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="BookDALTest.updateBookTest_Failure" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="Books_management" />
       <option name="PACKAGE_NAME" value="" />
       <option name="MAIN_CLASS_NAME" value="BookDALTest" />
-      <option name="METHOD_NAME" value="testListAllBooks" />
+      <option name="METHOD_NAME" value="updateBookTest_Failure" />
       <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
@@ -114,11 +114,11 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="JUnit.BookDALTest.testInsertBook_Success" />
-        <item itemvalue="JUnit.BookDALTest.testListAllBooks" />
-        <item itemvalue="JUnit.BookDALTest.testInsertBook_Failure" />
-        <item itemvalue="JUnit.BookDALTest.testGetBook_NonExistingBook" />
-        <item itemvalue="JUnit.BookDALTest.testGetBook_ExistingBook" />
+        <item itemvalue="JUnit.BookDALTest.getBookTest_Failure" />
+        <item itemvalue="JUnit.BookDALTest.getBookTest_Success" />
+        <item itemvalue="JUnit.BookDALTest.updateBookTest_Failure" />
+        <item itemvalue="JUnit.BookDALTest.deleteBookTest_Failure" />
+        <item itemvalue="JUnit.BookDALTest.deleteBookTest_Success" />
       </list>
     </recent_temporary>
   </component>
